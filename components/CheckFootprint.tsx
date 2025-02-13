@@ -1,12 +1,3 @@
-// components/CheckFootprint.tsx
-
-/**
- * This project was developed by Nikandr Surkov.
- * 
- * YouTube: https://www.youtube.com/@NikandrSurkov
- * GitHub: https://github.com/nikandr-surkov
- */
-
 'use client'
 
 import ArrowBigRight from "@/icons/ArrowBigRight"
@@ -17,9 +8,12 @@ const CheckFootprint = () => {
             <div className="fixed top-0 w-full max-w-md px-4 py-3 bg-[#151516] cursor-pointer">
                 <div className="flex justify-between items-center pl-2 border-l-[2px] border-[#39a3ff]">
                     <div className="text-base text-white font-medium">Check the Dark Chanel</div>
-                    <button className="bg-[#319af7] rounded-full px-2 py-1">
-                        <ArrowBigRight className="w-5 h-5" />
-                    </button>
+                    {/* لینک دادن به فلش آبی */}
+                    <a href="https://t.me/Rabbit_coinR" target="_blank" rel="noopener noreferrer">
+                        <button className="bg-[#319af7] rounded-full px-2 py-1">
+                            <ArrowBigRight className="w-5 h-5" />
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
