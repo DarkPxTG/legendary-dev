@@ -48,13 +48,6 @@ const ReferralSystem: React.FC<ReferralSystemProps> = ({ initData, userId, start
     fetchReferrals();
   }, [userId, startParam]);
 
-  const handleInviteFriend = () => {
-    const inviteLink = `${INVITE_URL}?startapp=${userId}`;
-    const shareText = `Join me on this awesome Telegram mini app!`;
-    const fullUrl = `https://t.me/share/url?url=${encodeURIComponent(inviteLink)}&text=${encodeURIComponent(shareText)}`;
-    utils.openTelegramLink(fullUrl); // استفاده از توابع موجود در utils
-  };
-
   const handleCopyLink = () => {
     const inviteLink = `${INVITE_URL}?startapp=${userId}`;
     navigator.clipboard.writeText(inviteLink);
@@ -115,23 +108,18 @@ const ReferralSystem: React.FC<ReferralSystemProps> = ({ initData, userId, start
         </div>
       </div>
 
-      {/* Fixed Invite and Copy Buttons */}
-      <div className="fixed bottom-[80px] left-0 right-0 py-4 flex justify-center">
-        <div className="w-full max-w-md px-4">
-          <button 
-            onClick={handleInviteFriend}
-            className="w-full bg-[#4c9ce2] text-white py-4 rounded-xl text-lg font-medium mb-4"
-          >
-            Invite Friend
-          </button>
-          <button 
-            onClick={handleCopyLink}
-            className="w-full bg-green-500 text-white py-4 rounded-xl text-lg font-medium"
-          >
-            Copy Invite Link
-          </button>
-        </div>
-      </div>
+      {/* Fixed Copy Button */}
+<div className="fixed bottom-[80px] left-0 right-0 py-4 flex justify-center">
+  <div className="w-full max-w-md px-4">
+    <button 
+      onClick={handleCopyLink}
+      className="w-full bg-black text-white py-4 rounded-xl text-lg font-medium border-2 border-white"
+    >
+      Copy Invite Link
+    </button>
+  </div>
+</div>
+
     </div>
   );
 };
