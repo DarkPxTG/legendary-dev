@@ -1,12 +1,3 @@
-// components/TabContainer.tsx
-
-/**
- * This project was developed by Nikandr Surkov.
- * 
- * YouTube: https://www.youtube.com/@NikandrSurkov
- * GitHub: https://github.com/nikandr-surkov
- */
-
 'use client'
 
 import { useTab } from '@/contexts/TabContext'
@@ -15,8 +6,14 @@ import LeaderboardTab from './LeaderboardTab'
 import FriendsTab from './FriendsTab'
 import TasksTab from './TasksTab'
 
+// اضافه کردن مقادیر initData، userId و startParam
 const TabContainer = () => {
     const { activeTab } = useTab()
+
+    // این مقادیر را می‌توانید از state، context یا props دریافت کنید
+    const initData = 'someInitData';  // مقدار initData
+    const userId = 'user123';         // مقدار userId
+    const startParam = 'referrer123'; // مقدار startParam
 
     return (
         <div className="flex-1 overflow-hidden max-w-md mx-auto pt-[44px] pb-[72px]">
@@ -26,8 +23,13 @@ const TabContainer = () => {
             <div className={`${activeTab === 'leaderboard' ? 'is-show' : 'is-hide'}`}>
                 <LeaderboardTab />
             </div>
+            {/* ارسال مقادیر به کامپوننت FriendsTab */}
             <div className={`${activeTab === 'friends' ? 'is-show' : 'is-hide'}`}>
-                <FriendsTab />
+                <FriendsTab 
+                    initData={initData}
+                    userId={userId}
+                    startParam={startParam}
+                />
             </div>
             <div className={`${activeTab === 'earn' ? 'is-show' : 'is-hide'}`}>
                 <TasksTab />

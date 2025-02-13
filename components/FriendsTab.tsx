@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { initUtils } from '@telegram-apps/sdk';
+import * as utils from '@telegram-apps/sdk'; // استفاده از utils به جای initUtils
 import Image from 'next/image';
 import { paws } from '@/images';
 
@@ -49,11 +49,10 @@ const ReferralSystem: React.FC<ReferralSystemProps> = ({ initData, userId, start
   }, [userId, startParam]);
 
   const handleInviteFriend = () => {
-    const utils = initUtils();
     const inviteLink = `${INVITE_URL}?startapp=${userId}`;
     const shareText = `Join me on this awesome Telegram mini app!`;
     const fullUrl = `https://t.me/share/url?url=${encodeURIComponent(inviteLink)}&text=${encodeURIComponent(shareText)}`;
-    utils.openTelegramLink(fullUrl);
+    utils.openTelegramLink(fullUrl); // استفاده از توابع موجود در utils
   };
 
   const handleCopyLink = () => {
@@ -86,35 +85,35 @@ const ReferralSystem: React.FC<ReferralSystemProps> = ({ initData, userId, start
 
       {/* Empty State or Referral List */}
       <div className="mt-8 mb-2">
-  <div className="bg-[#151516] w-full rounded-2xl p-8 flex flex-col items-center">
-    {referrals.length > 0 ? (
-      <>
-        <h2 className="text-2xl font-bold mb-4 text-white">Your Referrals</h2>
-        <ul className="w-full">
-          {referrals.map((referral, index) => (
-            <li key={index} className="text-xl text-[#8e8e93] bg-gray-800 p-4 mb-2 rounded">
-              User {referral}
-            </li>
-          ))}
-        </ul>
-      </>
-    ) : (
-      <>
-        <Image
-          src={paws}
-          alt="Paws"
-          width={171}
-          height={132}
-          className="mb-4"
-        />
-        <p className="text-xl text-[#8e8e93] text-center">
-          There is nothing else.<br />
-          Invite to get more rewards.
-        </p>
-      </>
-    )}
-  </div>
-</div>
+        <div className="bg-[#151516] w-full rounded-2xl p-8 flex flex-col items-center">
+          {referrals.length > 0 ? (
+            <>
+              <h2 className="text-2xl font-bold mb-4 text-white">Your Referrals</h2>
+              <ul className="w-full">
+                {referrals.map((referral, index) => (
+                  <li key={index} className="text-xl text-[#8e8e93] bg-gray-800 p-4 mb-2 rounded">
+                    User {referral}
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <>
+              <Image
+                src={paws}
+                alt="Paws"
+                width={171}
+                height={132}
+                className="mb-4"
+              />
+              <p className="text-xl text-[#8e8e93] text-center">
+                There is nothing else.<br />
+                Invite to get more rewards.
+              </p>
+            </>
+          )}
+        </div>
+      </div>
 
       {/* Fixed Invite and Copy Buttons */}
       <div className="fixed bottom-[80px] left-0 right-0 py-4 flex justify-center">
